@@ -818,3 +818,340 @@ form > button {
     }
 
 }
+/* =========================================
+   FINAL VISUAL TOUCH - SOFT PINK
+   Tidak mengubah HTML / JavaScript
+========================================= */
+
+:root {
+    --pink-main: #d94f8a;
+    --pink-dark: #b83d72;
+    --pink-soft: #fde8f1;
+    --pink-pale: #fff7fa;
+    --text-dark: #29242a;
+    --text-muted: #7d7279;
+    --border-soft: #eadde4;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+body {
+    background: #fff8fb;
+    color: var(--text-dark);
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    background: linear-gradient(
+        180deg,
+        #2d252a 0%,
+        #211d20 100%
+    );
+}
+
+.sidebar-logo {
+    border-bottom-color: #4a3c43;
+}
+
+.sidebar-logo h2 {
+    color: #ffffff;
+}
+
+.sidebar-logo p {
+    color: #d8c7d0;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(217, 79, 138, 0.15);
+    color: #ffffff;
+}
+
+.sidebar-nav a.active {
+    background: var(--pink-main);
+    color: white;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.main-content {
+    background: transparent;
+}
+
+.page-header h1 {
+    color: var(--text-dark);
+}
+
+.page-header p {
+    color: var(--text-muted);
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card,
+.dashboard-card,
+.summary-card {
+    border: 1px solid var(--border-soft);
+
+    box-shadow:
+        0 5px 18px rgba(100, 55, 75, 0.06);
+
+    background: rgba(255, 255, 255, 0.97);
+}
+
+.card h3 {
+    color: var(--text-dark);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+button {
+    background: var(--pink-main);
+    color: white;
+}
+
+button:hover {
+    background: var(--pink-dark);
+}
+
+button:focus {
+    outline: 3px solid rgba(217, 79, 138, 0.15);
+    outline-offset: 1px;
+}
+
+
+/* Tombol secondary */
+
+#cancelButton,
+.remove-button,
+#resetFilterButton,
+.close-button {
+    background: #f5edf1;
+    color: #5c4f57;
+}
+
+#cancelButton:hover,
+.remove-button:hover,
+#resetFilterButton:hover,
+.close-button:hover {
+    background: #eadde4;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.form-group input,
+.form-group select,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="datetime-local"],
+select {
+    border-color: var(--border-soft);
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+input:focus,
+select:focus {
+    border-color: var(--pink-main);
+
+    box-shadow:
+        0 0 0 3px rgba(217, 79, 138, 0.12);
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+thead {
+    background: var(--pink-soft);
+}
+
+th {
+    color: #604652;
+}
+
+tbody tr:hover {
+    background: var(--pink-pale);
+}
+
+th,
+td {
+    border-bottom-color: #f0e3e9;
+}
+
+
+/* =========================================
+   DASHBOARD CARD
+========================================= */
+
+.dashboard-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #d94f8a,
+        #ee93b7
+    );
+}
+
+.dashboard-card-title {
+    color: var(--text-muted);
+}
+
+.dashboard-card-value {
+    color: #2d252a;
+}
+
+
+/* =========================================
+   SUMMARY LAPORAN
+========================================= */
+
+.summary-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        #d94f8a,
+        #ee93b7
+    );
+}
+
+.summary-title {
+    color: var(--text-muted);
+}
+
+.summary-value {
+    color: #2d252a;
+}
+
+
+/* =========================================
+   TOTAL TRANSAKSI
+========================================= */
+
+.total-box,
+.detail-total {
+    background: var(--pink-pale);
+
+    border-color: var(--border-soft);
+}
+
+
+/* =========================================
+   READONLY
+========================================= */
+
+.readonly-input {
+    background: #faf1f5;
+    color: #62555d;
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+.login-page {
+    background:
+        radial-gradient(
+            circle at top left,
+            #fde8f1 0%,
+            #fff8fb 45%,
+            #f8eef3 100%
+        );
+}
+
+.login-card {
+    border-color: var(--border-soft);
+
+    box-shadow:
+        0 10px 35px rgba(100, 55, 75, 0.08);
+}
+
+.login-card h1 {
+    color: var(--pink-main);
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+    background: rgba(38, 25, 31, 0.55);
+}
+
+.modal-content {
+    border: 1px solid var(--border-soft);
+
+    box-shadow:
+        0 18px 55px rgba(50, 30, 40, 0.18);
+}
+
+.transaction-info {
+    background: var(--pink-pale);
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.logout-button {
+    border-color: #66535d;
+    color: #e7dce2;
+}
+
+.logout-button:hover {
+    background: rgba(217, 79, 138, 0.18);
+}
