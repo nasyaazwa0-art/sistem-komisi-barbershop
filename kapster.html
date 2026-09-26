@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Kapster - Sistem Komisi Barbershop</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <h2>
+                    BARBERSHOP
+                </h2>
+
+                <p>
+                    Accounting System
+                </p>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="index.html">
+                    Dashboard
+                </a>
+
+                <a
+                    href="kapster.html"
+                    class="active"
+                >
+                    Master Kapster
+                </a>
+
+                <a href="layanan.html">
+                    Master Layanan
+                </a>
+
+                <a href="transaksi.html">
+                    Transaksi
+                </a>
+
+                <a href="riwayat.html">
+                    Riwayat Transaksi
+                </a>
+
+                <a href="laporan.html">
+                    Laporan Komisi
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <div class="page-header">
+
+                <h1>
+                    Master Data Kapster
+                </h1>
+
+                <p>
+                    Kelola data kapster barbershop.
+                </p>
+
+            </div>
+
+
+            <!-- FORM -->
+            <div class="card">
+
+                <h3 id="formTitle">
+                    Tambah Kapster
+                </h3>
+
+                <form id="kapsterForm">
+
+                    <input
+                        type="hidden"
+                        id="kapsterId"
+                    >
+
+                    <div class="form-group">
+
+                        <label for="nama">
+                            Nama Kapster
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nama"
+                            placeholder="Masukkan nama kapster"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="noTelepon">
+                            No. Telepon
+                        </label>
+
+                        <input
+                            type="text"
+                            id="noTelepon"
+                            placeholder="Contoh: 081234567890"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+                        <select id="status">
+
+                            <option value="aktif">
+                                Aktif
+                            </option>
+
+                            <option value="nonaktif">
+                                Nonaktif
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button type="submit">
+                        Simpan
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelButton"
+                        onclick="resetForm()"
+                        style="display: none;"
+                    >
+                        Batal
+                    </button>
+
+                </form>
+
+                <p id="message"></p>
+
+            </div>
+
+
+            <!-- DATA -->
+            <div class="card">
+
+                <h3>
+                    Daftar Kapster
+                </h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>No. Telepon</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="kapsterTable">
+
+                            <tr>
+
+                                <td colspan="5">
+                                    Loading...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/kapster.js"></script>
+
+</body>
+</html>

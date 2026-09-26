@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard - Sistem Komisi Barbershop
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app-layout">
+
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <h2>
+                    BARBERSHOP
+                </h2>
+
+                <p>
+                    Accounting System
+                </p>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="index.html"
+                    class="active"
+                >
+                    Dashboard
+                </a>
+
+                <a href="kapster.html">
+                    Master Kapster
+                </a>
+
+                <a href="layanan.html">
+                    Master Layanan
+                </a>
+
+                <a href="transaksi.html">
+                    Transaksi
+                </a>
+
+                <a href="riwayat.html">
+                    Riwayat Transaksi
+                </a>
+
+                <a href="laporan.html">
+                    Laporan Komisi
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
+        <main class="main-content">
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p>
+                        Ringkasan sistem informasi akuntansi barbershop.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 SUMMARY
+            ================================== -->
+
+            <div class="dashboard-grid">
+
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-title">
+                        Jumlah Transaksi
+                    </div>
+
+                    <div
+                        class="dashboard-card-value"
+                        id="dashboardJumlahTransaksi"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-title">
+                        Total Penjualan
+                    </div>
+
+                    <div
+                        class="dashboard-card-value"
+                        id="dashboardTotalPenjualan"
+                    >
+                        Rp0
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-title">
+                        Total Komisi
+                    </div>
+
+                    <div
+                        class="dashboard-card-value"
+                        id="dashboardTotalKomisi"
+                    >
+                        Rp0
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 KOMISI KAPSTER
+            ================================== -->
+
+            <div class="card">
+
+                <h3>
+                    Komisi Kapster Bulan Berjalan
+                </h3>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Kapster
+                                </th>
+
+                                <th>
+                                    Penjualan
+                                </th>
+
+                                <th>
+                                    Komisi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="dashboardKapsterTable"
+                        >
+
+                            <tr>
+
+                                <td colspan="4">
+                                    Loading...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <p id="dashboardMessage"></p>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================
+         SUPABASE
+    ====================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <script
+        src="js/supabase.js"
+    ></script>
+
+
+    <script
+        src="js/dashboard.js"
+    ></script>
+
+</body>
+
+</html>

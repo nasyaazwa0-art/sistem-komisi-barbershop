@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Riwayat Transaksi - Sistem Komisi Barbershop
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app-layout">
+
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <h2>
+                    BARBERSHOP
+                </h2>
+
+                <p>
+                    Accounting System
+                </p>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a href="index.html">
+                    Dashboard
+                </a>
+
+                <a href="kapster.html">
+                    Master Kapster
+                </a>
+
+                <a href="layanan.html">
+                    Master Layanan
+                </a>
+
+                <a href="transaksi.html">
+                    Transaksi
+                </a>
+
+                <a href="riwayat.html" class="active">
+                    Riwayat Transaksi
+                </a>
+
+                <a href="laporan.html">
+                    Laporan Komisi
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
+        <main class="main-content">
+
+            <div class="page-header">
+
+                <h1>
+                    Riwayat Transaksi
+                </h1>
+
+                <p>
+                    Lihat seluruh transaksi yang telah tersimpan.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================
+                 SEARCH
+            ====================================== -->
+
+            <div class="card">
+
+                <div class="search-row">
+
+                    <div class="form-group">
+
+                        <label for="searchInput">
+                            Cari Transaksi
+                        </label>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Cari nomor transaksi atau nama pelanggan..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="filterTanggal">
+                            Tanggal
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filterTanggal"
+                        >
+
+                    </div>
+
+
+                    <div class="search-button">
+
+                        <button
+                            type="button"
+                            id="resetFilterButton"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 TABEL TRANSAKSI
+            ====================================== -->
+
+            <div class="card">
+
+                <h3>
+                    Daftar Transaksi
+                </h3>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Nomor Transaksi
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Pelanggan
+                                </th>
+
+                                <th>
+                                    Pembayaran
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="transaksiTable">
+
+                            <tr>
+
+                                <td colspan="7">
+                                    Loading...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <p id="message"></p>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================
+         MODAL DETAIL
+    ====================================== -->
+
+    <div
+        id="detailModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Detail Transaksi
+                </h2>
+
+                <button
+                    type="button"
+                    id="closeModalButton"
+                    class="close-button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="detailContent">
+
+                Loading...
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         SUPABASE
+    ====================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <script
+        src="js/supabase.js"
+    ></script>
+
+
+    <script
+        src="js/riwayat.js"
+    ></script>
+
+</body>
+
+</html>

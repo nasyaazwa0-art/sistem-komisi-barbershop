@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Transaksi - Sistem Komisi Barbershop
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <h2>
+                    BARBERSHOP
+                </h2>
+
+                <p>
+                    Accounting System
+                </p>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="index.html">
+                    Dashboard
+                </a>
+
+                <a href="kapster.html">
+                    Master Kapster
+                </a>
+
+                <a href="layanan.html">
+                    Master Layanan
+                </a>
+
+                <a
+                    href="transaksi.html"
+                    class="active"
+                >
+                    Transaksi
+                </a>
+
+                <a href="riwayat.html">
+                    Riwayat Transaksi
+                </a>
+
+                <a href="laporan.html">
+                    Laporan Komisi
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <main class="main-content">
+
+            <div class="container">
+
+        <h1>
+            Transaksi Barbershop
+        </h1>
+
+        <p>
+            Input transaksi dan hitung komisi kapster secara otomatis.
+        </p>
+
+
+        <!-- =========================================
+             INFORMASI TRANSAKSI
+        ========================================== -->
+
+        <div class="card">
+
+            <h3>
+                Informasi Transaksi
+            </h3>
+
+
+            <form id="transaksiForm">
+
+                <div class="form-group">
+
+                    <label for="nomorTransaksi">
+                        Nomor Transaksi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomorTransaksi"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="tanggal">
+                        Tanggal
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="tanggal"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="namaPelanggan">
+                        Nama Pelanggan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="namaPelanggan"
+                        placeholder="Masukkan nama pelanggan"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="metodePembayaran">
+                        Metode Pembayaran
+                    </label>
+
+                    <select id="metodePembayaran">
+
+                        <option value="cash">
+                            Cash
+                        </option>
+
+                        <option value="debit">
+                            Debit
+                        </option>
+
+                        <option value="qris">
+                            QRIS
+                        </option>
+
+                        <option value="transfer">
+                            Transfer
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =====================================
+                     DETAIL TRANSAKSI
+                ====================================== -->
+
+                <h3>
+                    Detail Layanan
+                </h3>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Layanan
+                                </th>
+
+                                <th>
+                                    Kapster
+                                </th>
+
+                                <th>
+                                    Qty
+                                </th>
+
+                                <th>
+                                    Harga
+                                </th>
+
+                                <th>
+                                    Komisi
+                                </th>
+
+                                <th>
+                                    Subtotal
+                                </th>
+
+                                <th>
+                                    Nilai Komisi
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="detailTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <br>
+
+
+                <button
+                    type="button"
+                    id="addDetailButton"
+                >
+                    + Tambah Layanan
+                </button>
+
+
+                <!-- =====================================
+                     TOTAL
+                ====================================== -->
+
+                <div class="total-box">
+
+                    <div>
+
+                        <strong>
+                            Total Transaksi
+                        </strong>
+
+                        <span id="totalTransaksi">
+                            Rp0
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Total Komisi
+                        </strong>
+
+                        <span id="totalKomisi">
+                            Rp0
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+
+                <button
+                    type="submit"
+                >
+                    Simpan Transaksi
+                </button>
+
+
+            </form>
+
+
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- =========================================
+             HASIL
+        ========================================== -->
+
+        <div
+            class="card"
+            id="successCard"
+            style="display: none;"
+        >
+
+            <h3>
+                Transaksi Berhasil
+            </h3>
+
+            <p id="successMessage"></p>
+
+        </div>
+
+    </main>
+
+</div>
+
+    <!-- =========================================
+         SUPABASE
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- =========================================
+         SUPABASE CONFIG
+    ========================================== -->
+
+    <script
+        src="js/supabase.js"
+    ></script>
+
+
+    <!-- =========================================
+         TRANSAKSI LOGIC
+    ========================================== -->
+
+    <script
+        src="js/transaksi.js"
+    ></script>
+
+</body>
+
+</html>
