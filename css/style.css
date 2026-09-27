@@ -1155,3 +1155,49 @@ td {
 .logout-button:hover {
     background: rgba(217, 79, 138, 0.18);
 }
+/* =========================================
+   DASHBOARD HERO IMAGE
+   CSS ONLY - NO HTML CHANGE
+========================================= */
+
+body:has(#dashboardKapsterTable) .main-content::before {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+    height: 220px;
+
+    margin-bottom: 28px;
+
+    border-radius: 16px;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(45, 30, 38, 0.78),
+            rgba(45, 30, 38, 0.25)
+        ),
+        url("https://images.unsplash.com/photo-1759134248487-e8baaf31e33e?auto=format&fit=crop&fm=jpg&q=80&w=1600");
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow:
+        0 8px 25px rgba(70, 40, 55, 0.10);
+}
+
+
+/* =========================================
+   RESPONSIVE HERO
+========================================= */
+
+@media (max-width: 700px) {
+
+    body:has(#dashboardKapsterTable) .main-content::before {
+        height: 170px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+}
