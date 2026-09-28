@@ -1201,3 +1201,61 @@ body:has(#dashboardKapsterTable) .main-content::before {
     }
 
 }
+/* =========================================
+   SUBTLE UI POLISH
+========================================= */
+
+/* Card sedikit lebih clean */
+.card,
+.dashboard-card,
+.summary-card {
+    border-color: #eee3e8;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+
+/* Dashboard card sedikit lebih hidup */
+.dashboard-card:hover,
+.summary-card:hover {
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Judul halaman */
+.page-header h1 {
+    letter-spacing: -0.2px;
+}
+
+
+/* Sidebar active menu sedikit lebih elegan */
+.sidebar-nav a.active {
+    box-shadow: inset 3px 0 0 #e5a2bd;
+}
+
+
+/* Header tabel */
+thead {
+    border-bottom: 2px solid #eadde4;
+}
+
+
+/* Input yang sedang digunakan */
+input:focus,
+select:focus {
+    box-shadow: 0 0 0 2px rgba(217, 79, 138, 0.08);
+}
+
+
+/* Tombol sedikit lebih smooth */
+button {
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Total transaksi / komisi */
+.total-box,
+.detail-total {
+    border: 1px solid #eee1e7;
+}
