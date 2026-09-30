@@ -1259,3 +1259,198 @@ button {
 .detail-total {
     border: 1px solid #eee1e7;
 }
+/* =========================================
+   SOFT TEXTURED GRADIENT BACKGROUND
+   SIMPLE + STABLE
+========================================= */
+
+/* Background seluruh halaman */
+body {
+    background: #fdf3f8 !important;
+}
+
+
+/* Area utama aplikasi */
+.main-content {
+    background-color: #fdf3f8 !important;
+
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.70) 0%,
+            rgba(251, 226, 239, 0.55) 45%,
+            rgba(255, 245, 250, 0.75) 100%
+        ),
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.12) 0px,
+            rgba(255, 255, 255, 0.12) 1px,
+            transparent 1px,
+            transparent 7px
+        ) !important;
+
+    background-attachment: fixed;
+}
+
+
+/* Card tetap putih supaya konten jelas */
+.card,
+.dashboard-card,
+.summary-card {
+    background: #ffffff !important;
+}
+/* =========================================
+   VISIBLE PINK GRADIENT + TEXTURE
+   NO ANIMATION / NO LAYOUT CHANGE
+========================================= */
+
+body {
+    background: #f6d8e6 !important;
+}
+
+
+/* =========================================
+   MAIN BACKGROUND
+========================================= */
+
+.main-content {
+    background-color: #f8dce9 !important;
+
+    background-image:
+        /* glow kiri atas */
+        radial-gradient(
+            circle at 8% 8%,
+            rgba(255, 255, 255, 0.85) 0,
+            rgba(255, 255, 255, 0.25) 18%,
+            transparent 35%
+        ),
+
+        /* glow kanan atas */
+        radial-gradient(
+            circle at 92% 12%,
+            rgba(214, 76, 137, 0.22) 0,
+            transparent 28%
+        ),
+
+        /* glow bawah */
+        radial-gradient(
+            circle at 80% 90%,
+            rgba(255, 255, 255, 0.55) 0,
+            transparent 30%
+        ),
+
+        /* gradient utama */
+        linear-gradient(
+            135deg,
+            #fff4f9 0%,
+            #f8dce9 38%,
+            #efbdd2 68%,
+            #fff0f6 100%
+        ),
+
+        /* tekstur diagonal */
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.10) 0px,
+            rgba(255, 255, 255, 0.10) 2px,
+            transparent 2px,
+            transparent 9px
+        ) !important;
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================
+   CARD TETAP BERSIH
+========================================= */
+
+.card,
+.dashboard-card,
+.summary-card {
+    background: #ffffff !important;
+}
+
+
+/* =========================================
+   TRANSACTION TOTAL
+========================================= */
+
+.total-box,
+.detail-total {
+    background: #fff4f8 !important;
+}
+
+
+/* =========================================
+   TABEL
+========================================= */
+
+thead {
+    background: #f8dce9 !important;
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+.login-page {
+    background:
+        linear-gradient(
+            135deg,
+            #fff3f8 0%,
+            #f4c9dc 50%,
+            #fbe9f1 100%
+        ) !important;
+}
+/* =========================================
+   SIDEBAR ICONS
+   CSS ONLY
+========================================= */
+
+/* Dashboard */
+.sidebar-nav a[href="index.html"]::before {
+    content: "📊";
+}
+
+/* Kapster */
+.sidebar-nav a[href="kapster.html"]::before {
+    content: "👤";
+}
+
+/* Layanan */
+.sidebar-nav a[href="layanan.html"]::before {
+    content: "✂️";
+}
+
+/* Transaksi */
+.sidebar-nav a[href="transaksi.html"]::before {
+    content: "🧾";
+}
+
+/* Riwayat */
+.sidebar-nav a[href="riwayat.html"]::before {
+    content: "🕘";
+}
+
+/* Laporan */
+.sidebar-nav a[href="laporan.html"]::before {
+    content: "📈";
+}
+
+
+/* Jarak icon dengan tulisan */
+.sidebar-nav a::before {
+    display: inline-flex;
+
+    width: 25px;
+    min-width: 25px;
+
+    margin-right: 9px;
+
+    font-size: 16px;
+
+    align-items: center;
+    justify-content: center;
+}
