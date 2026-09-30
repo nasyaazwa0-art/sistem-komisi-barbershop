@@ -1,10 +1,18 @@
 # Sistem Informasi Akuntansi Pembagian Komisi Kapster pada Usaha Barbershop Berbasis Web
 
+## 🚀 Live Demo
+
+**[👉 Buka Web App](https://nasyaazwa0-art.github.io/sistem-komisi-barbershop/)**
+
+> Website demo dapat langsung diakses melalui GitHub Pages.
+
+---
+
 ## 📋 Deskripsi
 
-**Sistem Informasi Akuntansi Pembagian Komisi Kapster** adalah aplikasi berbasis web yang dirancang untuk membantu usaha barbershop dalam mengelola data kapster, layanan, transaksi, serta perhitungan dan pelaporan komisi kapster secara otomatis.
+**Sistem Informasi Akuntansi Pembagian Komisi Kapster** merupakan aplikasi berbasis web yang dirancang untuk membantu usaha barbershop dalam mengelola data kapster, layanan, transaksi, serta perhitungan dan pelaporan komisi kapster secara otomatis.
 
-Aplikasi ini mengintegrasikan proses pencatatan transaksi dengan informasi pembagian komisi sehingga data transaksi dapat diolah menjadi informasi yang lebih terstruktur untuk mendukung pengelolaan operasional dan komisi kapster.
+Aplikasi ini mengintegrasikan proses pencatatan transaksi dengan pengolahan informasi komisi sehingga data transaksi dapat menghasilkan informasi yang terstruktur untuk mendukung pengelolaan operasional usaha dan pembagian komisi kapster.
 
 ---
 
@@ -24,7 +32,7 @@ Sistem ini dibuat untuk:
 
 ## ✨ Fitur Utama
 
-### Dashboard
+### 📊 Dashboard
 
 Menampilkan ringkasan informasi sistem, meliputi:
 
@@ -33,7 +41,7 @@ Menampilkan ringkasan informasi sistem, meliputi:
 * Total komisi.
 * Ringkasan komisi kapster pada periode berjalan.
 
-### Master Data Kapster
+### 👤 Master Data Kapster
 
 Digunakan untuk mengelola data kapster:
 
@@ -42,7 +50,7 @@ Digunakan untuk mengelola data kapster:
 * Mengubah data kapster.
 * Mengelola status kapster.
 
-### Master Data Layanan
+### ✂️ Master Data Layanan
 
 Digunakan untuk mengelola:
 
@@ -51,7 +59,7 @@ Digunakan untuk mengelola:
 * Persentase komisi.
 * Status layanan.
 
-### Transaksi
+### 🧾 Transaksi
 
 Digunakan untuk mencatat transaksi barbershop dengan:
 
@@ -65,11 +73,11 @@ Digunakan untuk mencatat transaksi barbershop dengan:
 * Subtotal.
 * Nilai komisi.
 
-### Perhitungan Komisi Otomatis
+### 💰 Perhitungan Komisi Otomatis
 
 Sistem menghitung komisi berdasarkan rumus:
 
-> **Komisi = Subtotal × Persentase Komisi**
+**Komisi = Subtotal × Persentase Komisi**
 
 Contoh:
 
@@ -82,15 +90,15 @@ Komisi
 = Rp12.000
 ```
 
-### Riwayat Transaksi
+### 🕘 Riwayat Transaksi
 
 Menyediakan informasi transaksi yang telah tersimpan dan dapat:
 
-* Dicari berdasarkan nomor transaksi atau pelanggan.
+* Dicari berdasarkan nomor transaksi atau nama pelanggan.
 * Difilter berdasarkan tanggal.
-* Dilihat detailnya.
+* Dilihat detail transaksinya.
 
-### Laporan Komisi
+### 📈 Laporan Komisi
 
 Menampilkan:
 
@@ -110,7 +118,7 @@ Menampilkan:
               ┌────────────────┼────────────────┐
               │                │                │
               ▼                ▼                ▼
-           HTML              CSS           JavaScript
+            HTML              CSS           JavaScript
               │                │                │
               └────────────────┼────────────────┘
                                │
@@ -125,9 +133,9 @@ Menampilkan:
 
 ## 🗄️ Struktur Database
 
-Database menggunakan PostgreSQL melalui Supabase.
+Database menggunakan **PostgreSQL melalui Supabase**.
 
-Tabel utama:
+### Tabel Utama
 
 ```text
 KAPSTER
@@ -174,7 +182,7 @@ DETAIL_TRANSAKSI
 └── created_at
 ```
 
-Relasi utama:
+### Relasi
 
 ```text
 KAPSTER
@@ -193,52 +201,6 @@ TRANSAKSI
    │
    └──────────────► DETAIL_TRANSAKSI
 ```
-
----
-
-## 📁 Struktur Project
-
-```text
-sistem-komisi-barbershop/
-│
-├── .gitignore
-├── README.md
-│
-├── index.html
-├── kapster.html
-├── layanan.html
-├── transaksi.html
-├── riwayat.html
-├── laporan.html
-│
-├── css/
-│   └── style.css
-│
-└── js/
-    ├── app.js
-    ├── dashboard.js
-    ├── kapster.js
-    ├── layanan.js
-    ├── transaksi.js
-    ├── riwayat.js
-    ├── laporan.js
-    └── supabase.js
-```
-
----
-
-## 🛠️ Teknologi yang Digunakan
-
-| Teknologi    | Fungsi                                 |
-| ------------ | -------------------------------------- |
-| HTML5        | Struktur halaman web                   |
-| CSS3         | Tampilan dan responsive layout         |
-| JavaScript   | Logika dan interaksi aplikasi          |
-| Supabase     | Backend dan koneksi database           |
-| PostgreSQL   | Database relasional                    |
-| Git          | Version control                        |
-| GitHub       | Repository dan penyimpanan source code |
-| GitHub Pages | Deployment website                     |
 
 ---
 
@@ -271,7 +233,7 @@ Perhitungan Komisi
 
 ---
 
-## 💰 Contoh Perhitungan
+## 💡 Contoh Perhitungan
 
 Misalkan terdapat transaksi:
 
@@ -319,6 +281,52 @@ Total Komisi
 
 ---
 
+## 🛠️ Teknologi yang Digunakan
+
+| Teknologi    | Fungsi                         |
+| ------------ | ------------------------------ |
+| HTML5        | Struktur halaman web           |
+| CSS3         | Tampilan dan responsive layout |
+| JavaScript   | Logika dan interaksi aplikasi  |
+| Supabase     | Backend dan koneksi database   |
+| PostgreSQL   | Database relasional            |
+| Git          | Version control                |
+| GitHub       | Repository dan source code     |
+| GitHub Pages | Deployment website             |
+
+---
+
+## 📁 Struktur Project
+
+```text
+sistem-komisi-barbershop/
+│
+├── .gitignore
+├── README.md
+│
+├── index.html
+├── kapster.html
+├── layanan.html
+├── transaksi.html
+├── riwayat.html
+├── laporan.html
+│
+├── css/
+│   └── style.css
+│
+└── js/
+    ├── app.js
+    ├── dashboard.js
+    ├── kapster.js
+    ├── layanan.js
+    ├── transaksi.js
+    ├── riwayat.js
+    ├── laporan.js
+    └── supabase.js
+```
+
+---
+
 ## 🔌 Integrasi Sistem
 
 Aplikasi terhubung dengan Supabase menggunakan JavaScript.
@@ -336,7 +344,7 @@ Supabase API
 PostgreSQL
 ```
 
-Data yang dimasukkan melalui aplikasi akan disimpan pada database Supabase dan kemudian digunakan kembali untuk dashboard, riwayat transaksi, serta laporan komisi.
+Data yang dimasukkan melalui aplikasi disimpan pada database Supabase dan digunakan kembali untuk dashboard, riwayat transaksi, serta laporan komisi.
 
 ---
 
@@ -360,7 +368,7 @@ cd sistem-komisi-barbershop
 code .
 ```
 
-### 4. Jalankan `index.html`
+### 4. Jalankan project
 
 Project dapat dijalankan menggunakan **Live Server** pada Visual Studio Code.
 
@@ -368,21 +376,15 @@ Project dapat dijalankan menggunakan **Live Server** pada Visual Studio Code.
 
 ## 🌐 Deployment
 
-Project dapat dipublikasikan menggunakan **GitHub Pages**.
+Project ini dipublikasikan menggunakan **GitHub Pages**.
 
-Source code:
+### Live Demo
 
-```text
-GitHub Repository
-        │
-        ▼
-GitHub Pages
-        │
-        ▼
-Web Application
-```
+**https://nasyaazwa0-art.github.io/sistem-komisi-barbershop/**
 
-Database tetap menggunakan Supabase PostgreSQL.
+### Repository
+
+**https://github.com/nasyaazwa0-art/sistem-komisi-barbershop**
 
 ---
 
@@ -390,7 +392,7 @@ Database tetap menggunakan Supabase PostgreSQL.
 
 Aplikasi ini dibuat sebagai project pengembangan **Sistem Informasi Akuntansi** dengan fokus pada proses pencatatan transaksi dan pembagian komisi kapster pada usaha barbershop.
 
-Struktur sistem dapat dikembangkan lebih lanjut sesuai kebutuhan operasional usaha, seperti pengembangan hak akses pengguna, pengelolaan periode pembayaran komisi, pencetakan laporan, serta fitur administrasi lainnya.
+Struktur sistem dapat dikembangkan lebih lanjut sesuai kebutuhan operasional usaha, seperti pengelolaan periode pembayaran komisi, pencetakan laporan, pengembangan hak akses pengguna, dan fitur administrasi lainnya.
 
 ---
 
@@ -399,4 +401,4 @@ Struktur sistem dapat dikembangkan lebih lanjut sesuai kebutuhan operasional usa
 **Nasya Azwa Syafika**
 
 Project Sistem Informasi Akuntansi
-Pembagian Komisi Kapster pada Usaha Barbershop Berbasis Web
+**Pembagian Komisi Kapster pada Usaha Barbershop Berbasis Web**
