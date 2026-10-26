@@ -1085,63 +1085,59 @@ document
                     );
 
 
-                // ====================================
-                // SIMPAN HEADER TRANSAKSI
-                // ====================================
+                // ============================================
+// SIMPAN TRANSAKSI SECARA ATOMIK
+// Header dan detail disimpan dalam satu operasi
+// ============================================
 
-                console.log(
-                    "MENYIMPAN TRANSAKSI..."
-                );
+const detailUntukDatabase = details.map((detail) => ({
+    layanan_id: detail.layanan_id,
+    kapster_id: detail.kapster_id,
+    qty: Number(detail.qty)
+}));
 
+const rpcResult = await window.db.rpc(
+    "simpan_transaksi_komisi",
+    {
+        p_nomor_transaksi: nomorTransaksi,
+        p_tanggal: convertToWIBISOString(tanggal),
+        p_nama_pelanggan: namaPelanggan || null,
+        p_metode_pembayaran: metodePembayaran,
+        p_details: detailUntukDatabase
+    }
+);
 
-                const transaksiResult =
-                    await window.db
-                        .from("transaksi")
-                        .insert({
+if (rpcResult.error) {
+    throw new Error(
+        "Gagal menyimpan transaksi: " +
+        rpcResult.error.message
+    );
+}
 
-                            nomor_transaksi:
-                                nomorTransaksi,
+const transaksi = rpcResult.data;
 
-                            tanggal:
-                                convertToWIBISOString(
-                                    tanggal
-                                ),
+if (!transaksi || !transaksi.id) {
+    throw new Error(
+        "Respons database tidak lengkap. " +
+        "Periksa hasil penyimpanan di Supabase."
+    );
+}
 
-                            nama_pelanggan:
-                                namaPelanggan ||
-                                null,
+// Gunakan hasil perhitungan dari database,
+// bukan hanya hasil perhitungan browser.
+const totalTerverifikasi = Number(transaksi.total);
+const totalKomisiTerverifikasi = Number(
+    transaksi.total_komisi
+);
 
-                            metode_pembayaran:
-                                metodePembayaran,
-
-                            total:
-                                total
-
-                        })
-                        .select(
-                            "id, nomor_transaksi"
-                        )
-                        .single();
-
-
-                console.log(
-                    "HASIL TRANSAKSI:",
-                    transaksiResult
-                );
-
-
-                if (transaksiResult.error) {
-
-                    throw new Error(
-                        "Gagal menyimpan transaksi utama: " +
-                        transaksiResult.error.message
-                    );
-
-                }
-
-
-                const transaksi =
-                    transaksiResult.data;
+if (
+    !Number.isFinite(totalTerverifikasi) ||
+    !Number.isFinite(totalKomisiTerverifikasi)
+) {
+    throw new Error(
+        "Total transaksi dari database tidak valid."
+    );
+}
 
 
                 // ====================================
@@ -1277,14 +1273,14 @@ document
 
                     Total transaksi:
                     <strong>
-                        ${formatRupiah(total)}
+                        ${formatRupiah(totalTerverifikasi)}
                     </strong>
 
                     <br><br>
 
                     Total komisi:
                     <strong>
-                        ${formatRupiah(totalKomisi)}
+                        ${formatRupiah(totalKomisiTerverifikasi)}
                     </strong>
 
                 `;
