@@ -1523,3 +1523,155 @@ thead {
 .auth-logout-button:focus:not(:focus-visible) {
     outline: none;
 }
+/* =========================================
+   EKSPOR DAN CETAK LAPORAN
+========================================= */
+
+.report-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.report-actions button {
+    margin-right: 0;
+}
+
+.export-report-button {
+    background: #604653;
+    color: #ffffff;
+}
+
+.export-report-button:hover {
+    background: #49343e;
+}
+
+.print-report-button {
+    background: #b83d72;
+    color: #ffffff;
+}
+
+.print-report-button:hover {
+    background: #972d5c;
+}
+
+.print-only {
+    display: none;
+}
+
+
+/* =========================================
+   FORMAT CETAK / SIMPAN PDF
+========================================= */
+
+@page {
+    size: A4 landscape;
+    margin: 12mm;
+}
+
+@media print {
+
+    body {
+        background: #ffffff !important;
+        color: #111111 !important;
+        font-size: 10pt;
+    }
+
+    /* Hilangkan elemen yang tidak diperlukan di dokumen */
+    .sidebar,
+    .report-filter-card,
+    #message {
+        display: none !important;
+    }
+
+    .app-layout {
+        display: block !important;
+        min-height: auto !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        background: #ffffff !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    .print-only {
+        display: block !important;
+        margin: 5px 0 15px !important;
+        font-size: 10pt;
+        font-weight: 600;
+    }
+
+    /* Kartu ringkasan */
+    .summary-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .summary-card,
+    .card {
+        background: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        box-shadow: none !important;
+        color: #111111 !important;
+    }
+
+    .summary-card {
+        padding: 12px !important;
+    }
+
+    .card {
+        padding: 12px !important;
+        margin-top: 12px !important;
+    }
+
+    /* Pastikan tabel tidak terpotong oleh container */
+    .table-wrapper {
+        width: 100% !important;
+        overflow: visible !important;
+    }
+
+    .table-wrapper table {
+        width: 100% !important;
+        min-width: 0 !important;
+        font-size: 8pt !important;
+        border-collapse: collapse !important;
+    }
+
+    table thead {
+        display: table-header-group !important;
+    }
+
+    table tr {
+        break-inside: avoid;
+    }
+
+    table th,
+    table td {
+        padding: 5px !important;
+        border: 1px solid #bbbbbb !important;
+        color: #111111 !important;
+        white-space: normal !important;
+    }
+
+    h1 {
+        font-size: 20pt !important;
+    }
+
+    h3 {
+        font-size: 12pt !important;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

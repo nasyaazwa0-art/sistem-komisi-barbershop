@@ -84,13 +84,14 @@
         <p>
             Laporan penjualan dan komisi kapster berdasarkan periode.
         </p>
+        <p class="print-only" id="printPeriod"></p>
 
 
         <!-- =====================================
              FILTER PERIODE
         ====================================== -->
 
-        <div class="card">
+        <div class="card report-filter-card">
 
             <h3>
                 Filter Periode
@@ -128,15 +129,33 @@
 
 
                 <div class="filter-button">
+    <div class="report-actions">
 
-                    <button
-                        type="button"
-                        id="filterButton"
-                    >
-                        Tampilkan Laporan
-                    </button>
+        <button
+            type="button"
+            id="filterButton"
+        >
+            Tampilkan Laporan
+        </button>
 
-                </div>
+        <button
+            type="button"
+            id="exportCsvButton"
+            class="export-report-button"
+        >
+            📥 Ekspor CSV
+        </button>
+
+        <button
+            type="button"
+            id="printReportButton"
+            class="print-report-button"
+        >
+            🖨️ Cetak / PDF
+        </button>
+
+    </div>
+</div>
 
             </div>
 

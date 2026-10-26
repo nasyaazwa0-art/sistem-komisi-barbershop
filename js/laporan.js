@@ -882,6 +882,254 @@ document
         loadLaporan
     );
 
+// ============================================
+// CEK STATUS LAPORAN SEBELUM EKSPOR
+// ============================================
+
+async function pastikanLaporanSiap() {
+    // Muat ulang berdasarkan periode yang dipilih.
+    await loadLaporan();
+
+    const pesan = document
+        .getElementById("message")
+        .textContent;
+
+    if (!pesan.includes("Laporan berhasil dimuat")) {
+        alert(
+            "Laporan belum berhasil dimuat. " +
+            "Periksa pesan kesalahan pada halaman."
+        );
+
+        return false;
+    }
+
+    return true;
+}
+
+
+// ============================================
+// KONVERSI RUPIAH MENJADI ANGKA
+// ============================================
+
+function rupiahKeAngkaCSV(nilai) {
+    const angka = String(nilai ?? "")
+        .replace(/[^\d-]/g, "");
+
+    return angka === "" ? 0 : Number(angka);
+}
+
+
+// ============================================
+// AMBIL ISI TABEL LAPORAN
+// ============================================
+
+function ambilBarisTabelCSV(idTabel) {
+    const tbody = document.getElementById(idTabel);
+    const table = tbody.closest("table");
+
+    const headers = Array.from(
+        table.querySelectorAll("thead th")
+    ).map(th => th.innerText.trim());
+
+    const hasil = [headers];
+
+    tbody.querySelectorAll("tr").forEach(tr => {
+        const cells = Array.from(
+            tr.querySelectorAll("td")
+        ).map(td =>
+            td.innerText
+                .replace(/\s+/g, " ")
+                .trim()
+        );
+
+        if (cells.length === 0) {
+            return;
+        }
+
+        const converted = cells.map((value, index) => {
+            const header = (
+                headers[index] || ""
+            ).toLowerCase();
+
+            const isMoneyColumn =
+                header.includes("penjualan") ||
+                header.includes("komisi") ||
+                header === "subtotal";
+
+            if (isMoneyColumn && /\d/.test(value)) {
+                return rupiahKeAngkaCSV(value);
+            }
+
+            return value;
+        });
+
+        hasil.push(converted);
+    });
+
+    return hasil;
+}
+
+
+// ============================================
+// PENGAMAN NILAI CSV
+// ============================================
+
+function escapeNilaiCSV(nilai) {
+    let teks = String(nilai ?? "");
+
+    // Mencegah teks yang berpotensi menjadi rumus
+    // dijalankan ketika CSV dibuka di spreadsheet.
+    if (/^[\t\r ]*[=+\-@]/.test(teks)) {
+        teks = "'" + teks;
+    }
+
+    return '"' + teks.replace(/"/g, '""') + '"';
+}
+
+
+// ============================================
+// EKSPOR LAPORAN KOMISI KE CSV
+// ============================================
+
+async function eksporLaporanCSV() {
+    const siap = await pastikanLaporanSiap();
+
+    if (!siap) {
+        return;
+    }
+
+    const tanggalMulai = document
+        .getElementById("tanggalMulai")
+        .value;
+
+    const tanggalAkhir = document
+        .getElementById("tanggalAkhir")
+        .value;
+
+    const jumlahTransaksi = Number(
+        document
+            .getElementById("jumlahTransaksi")
+            .textContent
+    ) || 0;
+
+    const totalPenjualan = rupiahKeAngkaCSV(
+        document
+            .getElementById("totalPenjualan")
+            .textContent
+    );
+
+    const totalKomisi = rupiahKeAngkaCSV(
+        document
+            .getElementById("totalKomisi")
+            .textContent
+    );
+
+    const barisCSV = [
+        ["SISTEM INFORMASI AKUNTANSI BARBERSHOP"],
+        ["LAPORAN KOMISI KAPSTER"],
+        [
+            "Periode",
+            tanggalMulai,
+            "sampai",
+            tanggalAkhir
+        ],
+        [],
+
+        ["RINGKASAN UMUM"],
+        ["Jumlah Transaksi", jumlahTransaksi],
+        ["Total Penjualan (Rp)", totalPenjualan],
+        ["Total Komisi (Rp)", totalKomisi],
+        [],
+
+        ["RINGKASAN KOMISI PER KAPSTER"],
+
+        ...ambilBarisTabelCSV(
+            "laporanKapsterTable"
+        ),
+
+        [],
+
+        ["RINCIAN TRANSAKSI"],
+
+        ...ambilBarisTabelCSV(
+            "detailLaporanTable"
+        )
+    ];
+
+    const isiCSV =
+        "\uFEFF" +
+        barisCSV
+            .map(baris =>
+                baris
+                    .map(escapeNilaiCSV)
+                    .join(",")
+            )
+            .join("\r\n");
+
+    const file = new Blob(
+        [isiCSV],
+        {
+            type: "text/csv;charset=utf-8;"
+        }
+    );
+
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        `laporan-komisi-${tanggalMulai}-sampai-${tanggalAkhir}.csv`;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 1000);
+}
+
+
+// ============================================
+// CETAK LAPORAN ATAU SIMPAN KE PDF
+// ============================================
+
+async function cetakLaporanPDF() {
+    const siap = await pastikanLaporanSiap();
+
+    if (!siap) {
+        return;
+    }
+
+    const tanggalMulai = document
+        .getElementById("tanggalMulai")
+        .value;
+
+    const tanggalAkhir = document
+        .getElementById("tanggalAkhir")
+        .value;
+
+    document.getElementById(
+        "printPeriod"
+    ).textContent =
+        `Periode laporan: ${tanggalMulai} sampai ${tanggalAkhir}`;
+
+    window.print();
+}
+
+
+// ============================================
+// HUBUNGKAN TOMBOL
+// ============================================
+
+document.getElementById(
+    "exportCsvButton"
+).onclick = eksporLaporanCSV;
+
+document.getElementById(
+    "printReportButton"
+).onclick = cetakLaporanPDF;
 
 // ============================================
 // INITIALIZE
