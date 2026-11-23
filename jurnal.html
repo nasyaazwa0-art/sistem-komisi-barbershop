@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Buku Jurnal - Barbershop Accounting System</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <h2>BARBERSHOP</h2>
+                <p>Accounting System</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="index.html">Dashboard</a>
+
+                <a href="kapster.html">Master Kapster</a>
+
+                <a href="layanan.html">Master Layanan</a>
+
+                <a href="transaksi.html">Transaksi</a>
+
+                <a href="riwayat.html">Riwayat Transaksi</a>
+
+                <a href="laporan.html">Laporan Komisi</a>
+
+                <a
+                    href="jurnal.html"
+                    class="active"
+                >
+                    Buku Jurnal
+                </a>
+
+                <a href="buku-besar.html">
+                    Buku Besar
+                </a>
+
+                <a href="pembayaran-komisi.html">
+                Pembayaran Komisi
+                </a>
+
+                <a href="mutasi-utang-komisi.html">
+                Mutasi Utang Komisi
+                </a>
+
+                <a href="koreksi-transaksi.html">
+                Koreksi Transaksi
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <div class="container">
+
+                <div class="page-header">
+
+                    <h1>Buku Jurnal Umum</h1>
+
+                    <p>
+                        Informasi pencatatan debit dan kredit
+                        dari transaksi operasional barbershop.
+                    </p>
+
+                </div>
+
+
+                <!-- FILTER -->
+                <div class="card journal-filter">
+
+                    <h3>Filter Periode Jurnal</h3>
+
+                    <div class="filter-grid">
+
+                        <div class="form-group">
+
+                            <label for="tanggalMulai">
+                                Tanggal Mulai
+                            </label>
+
+                            <input
+                                type="date"
+                                id="tanggalMulai"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tanggalAkhir">
+                                Tanggal Akhir
+                            </label>
+
+                            <input
+                                type="date"
+                                id="tanggalAkhir"
+                            >
+
+                        </div>
+
+
+                        <div class="filter-button">
+
+                            <button
+                                type="button"
+                                id="filterButton"
+                            >
+                                Tampilkan Jurnal
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+                <div class="journal-summary-grid">
+
+                    <div class="journal-summary-card">
+
+                        <p>Total Jurnal</p>
+
+                        <h2 id="totalJurnal">0</h2>
+
+                    </div>
+
+
+                    <div class="journal-summary-card">
+
+                        <p>Total Debit</p>
+
+                        <h2 id="totalDebit">Rp0</h2>
+
+                    </div>
+
+
+                    <div class="journal-summary-card">
+
+                        <p>Total Kredit</p>
+
+                        <h2 id="totalKredit">Rp0</h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- JOURNAL TABLE -->
+                <div class="card">
+
+                    <div class="journal-heading">
+
+                        <div>
+
+                            <h3>Rincian Buku Jurnal</h3>
+
+                            <p>
+                                Detail pencatatan berdasarkan
+                                akun dan nomor jurnal.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="printButton"
+                            class="journal-print-button"
+                        >
+                            Cetak / Simpan PDF
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="journal-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Nomor Jurnal</th>
+                                    <th>Jenis Jurnal</th>
+                                    <th>Keterangan</th>
+                                    <th>Akun</th>
+                                    <th>Debit</th>
+                                    <th>Kredit</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="jurnalTableBody">
+
+                                <tr>
+                                    <td colspan="7">
+                                        Memuat data jurnal...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BALANCE STATUS -->
+                <div class="card journal-balance-card">
+
+                    <h3>Status Keseimbangan Jurnal</h3>
+
+                    <p id="balanceMessage">
+                        Memeriksa keseimbangan jurnal...
+                    </p>
+
+                </div>
+
+
+                <p id="jurnalMessage"></p>
+
+                <p
+                    class="journal-print-only"
+                    id="printPeriod"
+                ></p>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <!-- AUTH GUARD MEMUAT js/jurnal.js SETELAH SESI TERVERIFIKASI -->
+    <script src="js/auth-guard.js"></script>
+
+</body>
+</html>

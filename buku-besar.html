@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buku Besar - SIA Barbershop</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <h2>BARBERSHOP</h2>
+            <p>Accounting System</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html">Dashboard</a>
+
+            <a href="kapster.html">Master Kapster</a>
+
+            <a href="layanan.html">Master Layanan</a>
+
+            <a href="transaksi.html">Transaksi</a>
+
+            <a href="riwayat.html">Riwayat Transaksi</a>
+
+            <a href="laporan.html">Laporan Komisi</a>
+
+            <a href="jurnal.html">Buku Jurnal</a>
+
+            <a href="buku-besar.html" class="active">
+                Buku Besar
+            </a>
+
+            <a href="pembayaran-komisi.html">
+                Pembayaran Komisi
+            </a>
+
+            <a href="mutasi-utang-komisi.html">
+               Mutasi Utang Komisi
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="container">
+
+            <div class="page-header">
+
+                <h1>Buku Besar</h1>
+
+                <p>
+                    Informasi mutasi dan saldo akun berdasarkan
+                    pencatatan jurnal transaksi barbershop.
+                </p>
+
+            </div>
+
+
+            <!-- FILTER -->
+            <div class="card ledger-filter">
+
+                <h3>Filter Buku Besar</h3>
+
+                <div class="ledger-filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="akunSelect">
+                            Pilih Akun
+                        </label>
+
+                        <select id="akunSelect">
+
+                            <option value="">
+                                Memuat akun...
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tanggalMulai">
+                            Tanggal Mulai
+                        </label>
+
+                        <input type="date" id="tanggalMulai">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tanggalAkhir">
+                            Tanggal Akhir
+                        </label>
+
+                        <input type="date" id="tanggalAkhir">
+
+                    </div>
+
+
+                    <div class="filter-button">
+
+                        <button type="button" id="filterButton">
+                            Tampilkan Buku Besar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT INFORMATION -->
+            <div class="card ledger-account-info">
+
+                <p>Nama Akun</p>
+
+                <h2 id="namaAkun">
+                    Belum dipilih
+                </h2>
+
+                <span id="kategoriAkun">
+                    -
+                </span>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="ledger-summary-grid">
+
+                <div class="ledger-summary-card">
+
+                    <p>Saldo Awal</p>
+
+                    <h2 id="saldoAwal">Rp0</h2>
+
+                </div>
+
+
+                <div class="ledger-summary-card">
+
+                    <p>Total Debit</p>
+
+                    <h2 id="totalDebit">Rp0</h2>
+
+                </div>
+
+
+                <div class="ledger-summary-card">
+
+                    <p>Total Kredit</p>
+
+                    <h2 id="totalKredit">Rp0</h2>
+
+                </div>
+
+
+                <div class="ledger-summary-card ledger-ending">
+
+                    <p>Saldo Akhir</p>
+
+                    <h2 id="saldoAkhir">Rp0</h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEDGER TABLE -->
+            <div class="card">
+
+                <div class="ledger-heading">
+
+                    <div>
+
+                        <h3>Rincian Buku Besar</h3>
+
+                        <p>
+                            Mutasi debit, kredit, dan saldo berjalan.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="printButton"
+                        class="ledger-print-button"
+                    >
+                        Cetak / Simpan PDF
+                    </button>
+
+                </div>
+
+
+                <p class="ledger-print-only" id="printPeriod"></p>
+
+
+                <div class="table-wrapper">
+
+                    <table class="ledger-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Tanggal</th>
+
+                                <th>Nomor Jurnal</th>
+
+                                <th>Keterangan</th>
+
+                                <th>Debit</th>
+
+                                <th>Kredit</th>
+
+                                <th>Saldo</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ledgerTableBody">
+
+                            <tr>
+
+                                <td colspan="6">
+                                    Memuat buku besar...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATUS -->
+            <div class="card ledger-status-card">
+
+                <h3>Status Pencatatan</h3>
+
+                <p id="ledgerMessage">
+                    Memuat informasi...
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/auth-guard.js"></script>
+
+</body>
+</html>

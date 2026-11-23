@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pembayaran Komisi - SIA Barbershop</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <h2>BARBERSHOP</h2>
+            <p>Accounting System</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html">Dashboard</a>
+            <a href="kapster.html">Master Kapster</a>
+            <a href="layanan.html">Master Layanan</a>
+            <a href="transaksi.html">Transaksi</a>
+            <a href="riwayat.html">Riwayat Transaksi</a>
+            <a href="laporan.html">Laporan Komisi</a>
+            <a href="jurnal.html">Buku Jurnal</a>
+            <a href="buku-besar.html">Buku Besar</a>
+
+            <a href="pembayaran-komisi.html" class="active">
+                Pembayaran Komisi
+            </a>
+
+            <a href="mutasi-utang-komisi.html">
+                Mutasi Utang Komisi
+                </a>
+
+            <a href="koreksi-transaksi.html">
+                Koreksi Transaksi
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <div class="container">
+
+            <div class="page-header">
+
+                <h1>Pembayaran Komisi Kapster</h1>
+
+                <p>
+                    Pengelolaan kewajiban dan pembayaran komisi
+                    kapster berdasarkan transaksi yang telah diakui.
+                </p>
+
+            </div>
+
+
+            <!-- RINGKASAN -->
+
+            <div class="payment-summary-grid">
+
+                <div class="payment-summary-card">
+
+                    <p>Total Komisi Diakui</p>
+
+                    <h2 id="totalKomisi">Rp0</h2>
+
+                </div>
+
+
+                <div class="payment-summary-card">
+
+                    <p>Total Sudah Dibayar</p>
+
+                    <h2 id="totalDibayar">Rp0</h2>
+
+                </div>
+
+
+                <div class="payment-summary-card">
+
+                    <p>Sisa Utang Komisi</p>
+
+                    <h2 id="totalUtang">Rp0</h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- SALDO PER KAPSTER -->
+
+            <div class="card">
+
+                <div class="payment-heading">
+
+                    <div>
+
+                        <h3>Saldo Komisi Kapster</h3>
+
+                        <p>
+                            Ringkasan komisi yang telah diakui
+                            dan pembayaran yang telah dilakukan.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="refreshButton"
+                        class="payment-refresh-button"
+                    >
+                        Muat Ulang
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="payment-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Nama Kapster</th>
+                                <th>Total Komisi</th>
+                                <th>Sudah Dibayar</th>
+                                <th>Sisa Utang</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="saldoTableBody">
+
+                            <tr>
+                                <td colspan="5">
+                                    Memuat data...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORM PEMBAYARAN -->
+
+            <div class="card payment-form-card">
+
+                <h3>Formulir Pembayaran Komisi</h3>
+
+                <p class="payment-form-description">
+                    Catat pembayaran komisi kapster
+                    yang masih menjadi kewajiban usaha.
+                </p>
+
+
+                <form id="paymentForm">
+
+                    <div class="payment-form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="kapsterSelect">
+                                Kapster
+                            </label>
+
+                            <select
+                                id="kapsterSelect"
+                                required
+                            >
+
+                                <option value="">
+                                    Pilih kapster
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tanggalPembayaran">
+                                Tanggal Pembayaran
+                            </label>
+
+                            <input
+                                type="date"
+                                id="tanggalPembayaran"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="metodePembayaran">
+                                Metode Pembayaran
+                            </label>
+
+                            <select
+                                id="metodePembayaran"
+                                required
+                            >
+
+                                <option value="cash">Cash</option>
+
+                                <option value="debit">Debit</option>
+
+                                <option value="qris">QRIS</option>
+
+                                <option value="transfer">Transfer</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="jumlahPembayaran">
+                                Jumlah Pembayaran
+                            </label>
+
+                            <input
+                                type="number"
+                                id="jumlahPembayaran"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="Contoh: 300000"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group payment-notes">
+
+                            <label for="catatanPembayaran">
+                                Catatan
+                            </label>
+
+                            <textarea
+                                id="catatanPembayaran"
+                                rows="3"
+                                placeholder="Catatan pembayaran (opsional)"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="payment-balance-info">
+
+                        <span>Saldo komisi tersedia:</span>
+
+                        <strong id="saldoTersedia">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-actions">
+
+                        <button
+                            type="submit"
+                            id="submitPayment"
+                        >
+                            Simpan Pembayaran
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <p
+                    id="paymentMessage"
+                    role="status"
+                ></p>
+
+            </div>
+
+
+            <!-- RIWAYAT PEMBAYARAN -->
+
+            <div class="card">
+
+                <h3>Riwayat Pembayaran Komisi</h3>
+
+                <p class="payment-form-description">
+                    Daftar pembayaran komisi yang telah dicatat.
+                </p>
+
+
+                <div class="table-wrapper">
+
+                    <table class="payment-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Nomor Pembayaran</th>
+                                <th>Tanggal</th>
+                                <th>Kapster</th>
+                                <th>Metode</th>
+                                <th>Jumlah</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="historyTableBody">
+
+                            <tr>
+                                <td colspan="6">
+                                    Memuat riwayat...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/auth-guard.js"></script>
+
+</body>
+</html>

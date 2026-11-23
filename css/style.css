@@ -1675,3 +1675,936 @@ thead {
         print-color-adjust: exact;
     }
 }
+/* =========================================
+   BUKU JURNAL - PINK ACCOUNTING THEME
+========================================= */
+
+.journal-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.journal-summary-card {
+    background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #ffffff
+    );
+
+    padding: 22px;
+    border-radius: 12px;
+
+    border: 1px solid #f4c5d8;
+
+    box-shadow: 0 3px 10px rgba(160, 60, 100, 0.08);
+}
+
+.journal-summary-card p {
+    color: #87536b;
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+
+.journal-summary-card h2 {
+    color: #b8326c;
+    margin: 0;
+    font-size: 24px;
+}
+
+.journal-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.journal-heading h3 {
+    margin-bottom: 5px;
+}
+
+.journal-heading p {
+    color: #777;
+    margin-top: 5px;
+}
+
+.journal-print-button {
+    background: #c83f79;
+    color: white;
+}
+
+.journal-print-button:hover {
+    background: #a92e63;
+}
+
+.journal-table {
+    min-width: 1100px;
+}
+
+.journal-table thead th {
+    background: #f9dce9;
+    color: #71354f;
+}
+
+.journal-table tbody tr:hover {
+    background: #fff5f9;
+}
+
+.amount-cell {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.journal-balance-card {
+    border-left: 5px solid #c83f79;
+}
+
+.journal-balanced {
+    color: #18794e;
+    font-weight: bold;
+}
+
+.journal-unbalanced {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.journal-print-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .journal-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .journal-heading {
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================================
+   PRINT BUKU JURNAL
+========================================= */
+
+@media print {
+
+    @page {
+        size: A4 landscape;
+        margin: 12mm;
+    }
+
+    .sidebar,
+    .journal-filter,
+    .journal-print-button {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    .journal-print-only {
+        display: block !important;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .journal-summary-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .journal-table {
+        min-width: 0 !important;
+        font-size: 8pt;
+    }
+
+    .journal-table th,
+    .journal-table td {
+        padding: 5px !important;
+        white-space: normal !important;
+    }
+
+    .journal-table tr {
+        break-inside: avoid;
+    }
+
+    body {
+        background: white !important;
+    }
+
+}
+/* =========================================
+   BUKU BESAR - PINK ACCOUNTING THEME
+========================================= */
+
+.ledger-filter-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+    align-items: end;
+    gap: 15px;
+}
+
+.ledger-account-info {
+    background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #ffffff
+    );
+
+    border: 1px solid #f4c5d8;
+    margin-top: 20px;
+}
+
+.ledger-account-info p {
+    color: #87536b;
+    margin-bottom: 8px;
+}
+
+.ledger-account-info h2 {
+    color: #b8326c;
+    margin: 0 0 8px;
+}
+
+.ledger-account-info span {
+    color: #87536b;
+    font-size: 13px;
+}
+
+.ledger-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.ledger-summary-card {
+    background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #ffffff
+    );
+
+    border: 1px solid #f4c5d8;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(160, 60, 100, 0.08);
+}
+
+.ledger-summary-card p {
+    color: #87536b;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.ledger-summary-card h2 {
+    color: #b8326c;
+    font-size: 19px;
+    margin: 0;
+}
+
+.ledger-ending {
+    background: linear-gradient(
+        135deg,
+        #f9dce9,
+        #fff0f5
+    );
+}
+
+.ledger-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.ledger-heading p {
+    color: #777;
+    margin-top: 5px;
+}
+
+.ledger-print-button {
+    background: #c83f79;
+    color: white;
+}
+
+.ledger-print-button:hover {
+    background: #a92e63;
+}
+
+.ledger-table {
+    min-width: 1000px;
+}
+
+.ledger-table thead th {
+    background: #f9dce9;
+    color: #71354f;
+}
+
+.ledger-table tbody tr:hover {
+    background: #fff5f9;
+}
+
+.ledger-amount {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.ledger-balance {
+    font-weight: 600;
+    color: #a92e63;
+}
+
+.ledger-status-card {
+    border-left: 5px solid #c83f79;
+}
+
+.ledger-print-only {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    .ledger-filter-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ledger-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .ledger-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ledger-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media print {
+
+    @page {
+        size: A4 landscape;
+        margin: 12mm;
+    }
+
+    .sidebar,
+    .ledger-filter,
+    .ledger-print-button {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .container {
+        max-width: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .ledger-print-only {
+        display: block !important;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .ledger-summary-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    .ledger-table {
+        min-width: 0 !important;
+        font-size: 8pt;
+    }
+
+    .ledger-table th,
+    .ledger-table td {
+        padding: 5px !important;
+        white-space: normal !important;
+    }
+
+    .ledger-table tr {
+        break-inside: avoid;
+    }
+
+    body {
+        background: white !important;
+    }
+
+}
+/* =========================================
+   PEMBAYARAN KOMISI - PINK THEME
+========================================= */
+
+.payment-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.payment-summary-card {
+    background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #ffffff
+    );
+
+    border: 1px solid #f4c5d8;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 3px 10px rgba(160, 60, 100, 0.08);
+}
+
+.payment-summary-card p {
+    color: #87536b;
+    margin-bottom: 10px;
+}
+
+.payment-summary-card h2 {
+    color: #b8326c;
+    margin: 0;
+    font-size: 23px;
+}
+
+.payment-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.payment-heading p,
+.payment-form-description {
+    color: #777;
+    font-size: 13px;
+}
+
+.payment-refresh-button {
+    background: #c83f79;
+    color: white;
+}
+
+.payment-table {
+    min-width: 850px;
+}
+
+.payment-table thead th {
+    background: #f9dce9;
+    color: #71354f;
+}
+
+.payment-table tbody tr:hover {
+    background: #fff5f9;
+}
+
+.payment-outstanding {
+    color: #b8326c;
+    font-weight: 600;
+}
+
+.payment-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background: #fff0f5;
+    color: #a92e63;
+    font-size: 12px;
+}
+
+.payment-form-card {
+    margin-top: 25px;
+}
+
+.payment-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 20px;
+    margin-top: 20px;
+}
+
+.payment-notes {
+    grid-column: 1 / -1;
+}
+
+.payment-balance-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff0f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    color: #87536b;
+}
+
+.payment-balance-info strong {
+    color: #b8326c;
+    font-size: 18px;
+}
+
+.payment-actions {
+    margin-top: 20px;
+}
+
+.payment-actions button {
+    background: #c83f79;
+    color: white;
+}
+
+.payment-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.payment-message {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.payment-message.success {
+    color: #18794e;
+}
+
+.payment-message.error {
+    color: #c0392b;
+}
+
+.payment-message.warning {
+    color: #986515;
+}
+
+@media (max-width: 768px) {
+
+    .payment-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-notes {
+        grid-column: auto;
+    }
+
+}
+/* =========================================
+   MUTASI UTANG KOMISI - PINK THEME
+========================================= */
+
+.mutasi-filter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 18px;
+    align-items: end;
+}
+
+.mutasi-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin: 22px 0;
+}
+
+.mutasi-summary-card {
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #f4c5d8;
+    background: linear-gradient(135deg, #fff0f5, #ffffff);
+    box-shadow: 0 3px 10px rgba(160, 60, 100, 0.07);
+}
+
+.mutasi-summary-card p {
+    color: #87536b;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.mutasi-summary-card h2 {
+    color: #b8326c;
+    font-size: 21px;
+    margin: 0;
+}
+
+.mutasi-summary-card.highlight {
+    background: linear-gradient(135deg, #f8dce7, #fff0f5);
+}
+
+.mutasi-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.mutasi-heading p {
+    color: #777;
+    margin-top: 5px;
+}
+
+.mutasi-actions {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.mutasi-actions button {
+    background: #c83f79;
+    color: white;
+}
+
+.mutasi-actions .mutasi-print-button {
+    background: #743650;
+}
+
+.mutasi-table {
+    min-width: 850px;
+}
+
+.mutasi-table thead th {
+    background: #f9dce9;
+    color: #71354f;
+}
+
+.mutasi-table tfoot th {
+    background: #f8dce7;
+    color: #71354f;
+    font-weight: bold;
+}
+
+.mutasi-table tbody tr:hover {
+    background: #fff5f9;
+}
+
+.mutasi-outstanding {
+    color: #b8326c;
+    font-weight: bold;
+}
+
+.mutasi-status-card {
+    border-left: 5px solid #c83f79;
+    margin-top: 20px;
+}
+
+.mutasi-print-only {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    .mutasi-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .mutasi-filter-grid,
+    .mutasi-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media print {
+
+    @page {
+        size: A4 landscape;
+        margin: 12mm;
+    }
+
+    .sidebar,
+    .mutasi-filter,
+    .mutasi-actions {
+        display: none !important;
+    }
+
+    .main-content {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .mutasi-print-only {
+        display: block !important;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .mutasi-summary-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    .mutasi-table {
+        min-width: 0 !important;
+    }
+
+    .mutasi-table th,
+    .mutasi-table td {
+        padding: 6px !important;
+        font-size: 8pt !important;
+    }
+
+}
+/* =========================================
+   KOREKSI TRANSAKSI - PINK ACCOUNTING
+========================================= */
+
+.correction-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 22px 0;
+}
+
+.correction-summary-card {
+    background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #ffffff
+    );
+
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #f4c5d8;
+}
+
+.correction-summary-card p {
+    color: #87536b;
+    margin-bottom: 10px;
+}
+
+.correction-summary-card h2 {
+    color: #b8326c;
+    margin: 0;
+}
+
+.correction-filter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.correction-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.correction-heading p {
+    color: #777;
+    margin-top: 5px;
+}
+
+.correction-table {
+    min-width: 950px;
+}
+
+.correction-table thead th {
+    background: #f9dce9;
+    color: #71354f;
+}
+
+.correction-table tbody tr:hover {
+    background: #fff5f9;
+}
+
+.correction-status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.correction-status.posted {
+    background: #e6f5ed;
+    color: #18794e;
+}
+
+.correction-status.reversed {
+    background: #fce6e7;
+    color: #ad3f4f;
+}
+
+.cancel-transaction-button {
+    background: #c83f79;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.correction-done {
+    font-size: 12px;
+    color: #777;
+}
+
+.correction-message {
+    margin-top: 15px;
+}
+
+.correction-message.success {
+    color: #18794e;
+}
+
+.correction-message.error {
+    color: #c0392b;
+}
+
+.correction-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: rgba(35, 15, 27, 0.55);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.correction-modal.hidden {
+    display: none;
+}
+
+.correction-modal-content {
+    background: white;
+    width: 100%;
+    max-width: 520px;
+
+    padding: 25px;
+    border-radius: 15px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.correction-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.correction-modal-header h2 {
+    color: #71354f;
+    font-size: 21px;
+}
+
+.correction-modal-header button {
+    border: none;
+    background: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #87536b;
+}
+
+.correction-warning {
+    background: #fff0f5;
+    border-left: 4px solid #c83f79;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    color: #71354f;
+}
+
+.correction-warning p {
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.correction-confirm-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.correction-confirm-label input {
+    margin-top: 3px;
+}
+
+.correction-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 23px;
+}
+
+.correction-modal-actions button {
+    padding: 10px 15px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+}
+
+#cancelModalButton {
+    background: #eee;
+    color: #444;
+}
+
+#confirmCancelButton {
+    background: #c83f79;
+    color: white;
+}
+
+#confirmCancelButton:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+
+    .correction-filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .correction-summary-grid,
+    .correction-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

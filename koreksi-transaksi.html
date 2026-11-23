@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Koreksi Transaksi - SIA Barbershop</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <h2>BARBERSHOP</h2>
+            <p>Accounting System</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html">Dashboard</a>
+            <a href="kapster.html">Master Kapster</a>
+            <a href="layanan.html">Master Layanan</a>
+            <a href="transaksi.html">Transaksi</a>
+            <a href="riwayat.html">Riwayat Transaksi</a>
+            <a href="laporan.html">Laporan Komisi</a>
+            <a href="jurnal.html">Buku Jurnal</a>
+            <a href="buku-besar.html">Buku Besar</a>
+            <a href="pembayaran-komisi.html">Pembayaran Komisi</a>
+            <a href="mutasi-utang-komisi.html">Mutasi Utang Komisi</a>
+
+            <a href="koreksi-transaksi.html" class="active">
+                Koreksi Transaksi
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <div class="container">
+
+            <div class="page-header">
+
+                <h1>Koreksi Transaksi</h1>
+
+                <p>
+                    Pengendalian dan pembatalan transaksi
+                    melalui mekanisme jurnal pembalik.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="correction-summary-grid">
+
+                <div class="correction-summary-card">
+                    <p>Total Transaksi Aktif</p>
+                    <h2 id="totalPosted">0</h2>
+                </div>
+
+                <div class="correction-summary-card">
+                    <p>Total Transaksi Dibatalkan</p>
+                    <h2 id="totalReversed">0</h2>
+                </div>
+
+            </div>
+
+
+            <!-- FILTER -->
+
+            <div class="card correction-filter">
+
+                <h3>Filter Transaksi</h3>
+
+                <div class="correction-filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="filterTanggalMulai">
+                            Tanggal Mulai
+                        </label>
+
+                        <input type="date" id="filterTanggalMulai">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="filterTanggalAkhir">
+                            Tanggal Akhir
+                        </label>
+
+                        <input type="date" id="filterTanggalAkhir">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="filterStatus">
+                            Status
+                        </label>
+
+                        <select id="filterStatus">
+
+                            <option value="all">Semua Status</option>
+
+                            <option value="posted">Posted</option>
+
+                            <option value="reversed">Reversed</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="filter-button">
+
+                        <button type="button" id="filterButton">
+                            Cari Transaksi
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRANSACTION TABLE -->
+
+            <div class="card">
+
+                <div class="correction-heading">
+
+                    <div>
+
+                        <h3>Daftar Transaksi</h3>
+
+                        <p>
+                            Pilih transaksi untuk melihat detail
+                            dan informasi jurnal.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="refreshButton"
+                    >
+                        Muat Ulang
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="correction-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Tanggal</th>
+
+                                <th>Nomor Transaksi</th>
+
+                                <th>Pelanggan</th>
+
+                                <th>Metode</th>
+
+                                <th>Total</th>
+
+                                <th>Status</th>
+
+                                <th>Aksi</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="correctionTableBody">
+
+                            <tr>
+                                <td colspan="7">
+                                    Memuat transaksi...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <p
+                id="correctionMessage"
+                role="status"
+            ></p>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL PEMBATALAN -->
+
+<div id="cancelModal" class="correction-modal hidden">
+
+    <div class="correction-modal-content">
+
+        <div class="correction-modal-header">
+
+            <h2>Pembatalan Transaksi</h2>
+
+            <button
+                type="button"
+                id="closeModal"
+                aria-label="Tutup"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <div class="correction-warning">
+
+            <strong>Perhatian!</strong>
+
+            <p>
+                Pembatalan akan membuat jurnal pembalik
+                dan mengubah status transaksi menjadi reversed.
+                Riwayat transaksi asli tidak akan dihapus.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Nomor Transaksi</label>
+
+            <input
+                type="text"
+                id="cancelTransactionNumber"
+                readonly
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Alasan Pembatalan</label>
+
+            <textarea
+                id="cancelReason"
+                rows="4"
+                minlength="5"
+                maxlength="500"
+                placeholder="Contoh: Kesalahan input transaksi dan nominal layanan."
+                required
+            ></textarea>
+
+        </div>
+
+
+        <label class="correction-confirm-label">
+
+            <input
+                type="checkbox"
+                id="confirmCancellation"
+            >
+
+            Saya memahami bahwa pembatalan akan menghasilkan
+            jurnal pembalik.
+
+        </label>
+
+
+        <div class="correction-modal-actions">
+
+            <button
+                type="button"
+                id="cancelModalButton"
+            >
+                Kembali
+            </button>
+
+            <button
+                type="button"
+                id="confirmCancelButton"
+                disabled
+            >
+                Konfirmasi Pembatalan
+            </button>
+
+        </div>
+
+
+        <p id="cancelModalMessage"></p>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/auth-guard.js"></script>
+
+</body>
+</html>

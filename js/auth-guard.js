@@ -12,7 +12,12 @@
         "layanan.html": "js/layanan.js",
         "transaksi.html": "js/transaksi.js",
         "riwayat.html": "js/riwayat.js",
-        "laporan.html": "js/laporan.js"
+        "laporan.html": "js/laporan.js",
+        "jurnal.html": "js/jurnal.js",
+        "buku-besar.html": "js/buku-besar.js",
+        "pembayaran-komisi.html": "js/pembayaran-komisi.js",
+        "mutasi-utang-komisi.html": "js/mutasi-utang-komisi.js",
+        "koreksi-transaksi.html": "js/koreksi-transaksi.js"
     };
 
     const pathSegments = window.location.pathname.split("/").filter(Boolean);

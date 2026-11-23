@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mutasi Utang Komisi - SIA Barbershop</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <h2>BARBERSHOP</h2>
+            <p>Accounting System</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html">Dashboard</a>
+            <a href="kapster.html">Master Kapster</a>
+            <a href="layanan.html">Master Layanan</a>
+            <a href="transaksi.html">Transaksi</a>
+            <a href="riwayat.html">Riwayat Transaksi</a>
+            <a href="laporan.html">Laporan Komisi</a>
+            <a href="jurnal.html">Buku Jurnal</a>
+            <a href="buku-besar.html">Buku Besar</a>
+            <a href="pembayaran-komisi.html">Pembayaran Komisi</a>
+
+            <a href="mutasi-utang-komisi.html" class="active">
+                Mutasi Utang Komisi
+            </a>
+
+            <a href="koreksi-transaksi.html">
+                Koreksi Transaksi
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <div class="container">
+
+            <div class="page-header">
+
+                <h1>Mutasi Utang Komisi Kapster</h1>
+
+                <p>
+                    Laporan perubahan kewajiban usaha kepada
+                    kapster berdasarkan pengakuan dan pembayaran komisi.
+                </p>
+
+            </div>
+
+
+            <!-- FILTER -->
+
+            <div class="card mutasi-filter">
+
+                <h3>Filter Periode</h3>
+
+                <div class="mutasi-filter-grid">
+
+                    <div class="form-group">
+
+                        <label for="tanggalMulai">
+                            Tanggal Mulai
+                        </label>
+
+                        <input type="date" id="tanggalMulai">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tanggalAkhir">
+                            Tanggal Akhir
+                        </label>
+
+                        <input type="date" id="tanggalAkhir">
+
+                    </div>
+
+
+                    <div class="filter-button">
+
+                        <button type="button" id="filterButton">
+                            Tampilkan Laporan
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RINGKASAN -->
+
+            <div class="mutasi-summary-grid">
+
+                <div class="mutasi-summary-card">
+                    <p>Saldo Awal</p>
+                    <h2 id="summaryAwal">Rp0</h2>
+                </div>
+
+                <div class="mutasi-summary-card">
+                    <p>Penambahan Komisi</p>
+                    <h2 id="summaryKomisi">Rp0</h2>
+                </div>
+
+                <div class="mutasi-summary-card">
+                    <p>Pembayaran Komisi</p>
+                    <h2 id="summaryBayar">Rp0</h2>
+                </div>
+
+                <div class="mutasi-summary-card highlight">
+                    <p>Saldo Akhir Utang</p>
+                    <h2 id="summaryAkhir">Rp0</h2>
+                </div>
+
+                <div class="mutasi-summary-card">
+                    <p>Pembatalan Komisi</p>
+                    <h2 id="summaryPembatalan">Rp0</h2>
+                </div>
+
+            </div>
+
+
+            <!-- TABEL -->
+
+            <div class="card">
+
+                <div class="mutasi-heading">
+
+                    <div>
+                        <h3>Rincian Mutasi per Kapster</h3>
+
+                        <p>
+                            Perubahan saldo utang komisi berdasarkan periode.
+                        </p>
+                    </div>
+
+
+                    <div class="mutasi-actions">
+
+                        <button
+                            type="button"
+                            id="exportButton"
+                        >
+                            📥 Ekspor CSV
+                        </button>
+
+                        <button
+                            type="button"
+                            id="printButton"
+                            class="mutasi-print-button"
+                        >
+                            🖨 Cetak / PDF
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <p id="printPeriod" class="mutasi-print-only"></p>
+
+
+                <div class="table-wrapper">
+
+                    <table class="mutasi-table">
+
+                        <thead>
+                             <tr>
+                                 <th>Nama Kapster</th>
+                                 <th>Saldo Awal</th>
+                                 <th>Penambahan Komisi</th>
+                                 <th>Pembatalan Komisi</th>
+                                 <th>Pembayaran</th>
+                                 <th>Saldo Akhir</th>
+                             </tr>
+                        </thead>
+
+                        <tbody id="mutasiTableBody">
+
+                            <tr>
+                                <td colspan="6">
+                                    Memuat data...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+
+                       <tfoot>
+                           <tr>
+                              <th>Total</th>
+                              <th id="totalAwal">Rp0</th>
+                              <th id="totalKomisi">Rp0</th>
+                              <th id="totalPembatalan">Rp0</th>
+                              <th id="totalBayar">Rp0</th>
+                              <th id="totalAkhir">Rp0</th>
+                           </tr>
+                        </tfoot>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECONCILIATION STATUS -->
+
+            <div class="card mutasi-status-card">
+
+                <h3>Informasi Rekonsiliasi</h3>
+
+                <p id="mutasiMessage">
+                    Menunggu data laporan...
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/auth-guard.js"></script>
+
+</body>
+</html>
